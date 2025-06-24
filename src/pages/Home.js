@@ -17,15 +17,15 @@ const Home = () => {
     <div
       className="d-flex flex-column justify-content-center align-items-center text-white"
       style={{
-        height: "100vh",
+        minHeight: "100vh",
         background: "linear-gradient(135deg, #141e30, #243b55)",
-        padding: "2rem",
+        padding: "2rem 1rem",
       }}
     >
       <h1
-        className="mb-5 fw-bold text-center"
+        className="mb-4 fw-bold text-center"
         style={{
-          fontSize: "3.5rem",
+          fontSize: "2.8rem",
           fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           textShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
         }}
@@ -34,59 +34,61 @@ const Home = () => {
       </h1>
 
       <div
-        className="d-grid gap-4"
-        style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          width: "100%",
-          maxWidth: "900px",
-        }}
+        className="row w-100 justify-content-center"
+        style={{ maxWidth: "900px" }}
       >
         {sections.map((section, index) => {
           const isActive = hoveredIndex === index;
 
           return (
-            <Link
-              to={section.to}
+            <div
               key={index}
-              className="d-flex flex-column justify-content-center align-items-center text-white text-decoration-none"
-              style={{
-                background: isActive
-                  ? "rgba(255, 255, 255, 0.15)"
-                  : "rgba(255, 255, 255, 0.07)",
-                padding: "2.5rem 1rem",
-                borderRadius: "1.25rem",
-                boxShadow: isActive
-                  ? "0 15px 35px rgba(0, 123, 255, 0.6)"
-                  : "0 6px 18px rgba(0, 0, 0, 0.2)",
-                transition: "all 0.4s ease",
-                color: "#fff",
-                userSelect: "none",
-                transform: isActive ? "scale(1.1)" : "scale(1)",
-                cursor: "pointer",
-                border: isActive ? "2px solid #007bff" : "2px solid transparent",
-              }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              className="col-12 col-sm-6 col-md-4 mb-4 d-flex justify-content-center"
             >
-              <i
-                className={`bi ${section.iconClass}`}
+              <Link
+                to={section.to}
+                className="text-white text-decoration-none w-100"
                 style={{
-                  fontSize: "2.5rem",
-                  marginBottom: "1rem",
-                  color: isActive ? "#007bff" : "#ccc",
-                  transition: "color 0.4s ease",
+                  background: isActive
+                    ? "rgba(255, 255, 255, 0.15)"
+                    : "rgba(255, 255, 255, 0.07)",
+                  padding: "2rem 1rem",
+                  borderRadius: "1.25rem",
+                  boxShadow: isActive
+                    ? "0 15px 35px rgba(0, 123, 255, 0.6)"
+                    : "0 6px 18px rgba(0, 0, 0, 0.2)",
+                  transition: "all 0.4s ease",
+                  transform: isActive ? "scale(1.05)" : "scale(1)",
+                  cursor: "pointer",
+                  border: isActive ? "2px solid #007bff" : "2px solid transparent",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
                 }}
-              />
-              <h3
-                style={{
-                  fontWeight: "600",
-                  fontSize: "1.6rem",
-                  textShadow: "0 0 5px rgba(0,0,0,0.2)",
-                }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                {section.title}
-              </h3>
-            </Link>
+                <i
+                  className={`bi ${section.iconClass}`}
+                  style={{
+                    fontSize: "2.2rem",
+                    marginBottom: "0.75rem",
+                    color: isActive ? "#007bff" : "#ccc",
+                    transition: "color 0.4s ease",
+                  }}
+                />
+                <h5
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "1.2rem",
+                    textShadow: "0 0 5px rgba(0,0,0,0.2)",
+                  }}
+                >
+                  {section.title}
+                </h5>
+              </Link>
+            </div>
           );
         })}
       </div>
