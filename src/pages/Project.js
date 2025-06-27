@@ -22,6 +22,13 @@ const projects = [
     tech: "React, Bootstrap",
     live: "https://surajkc14.com.np/",
   },
+  {
+    title: "Chat App",
+    description:
+      "Real-time chat application with room-based messaging built using Socket.IO.",
+    tech: "React, Socket.IO, Node.js",
+    live: "https://guff-liard.vercel.app/",
+  },
 ];
 
 const Projects = () => {
